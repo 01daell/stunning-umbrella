@@ -62,15 +62,14 @@ StudioKit is a Laravel-based SaaS for creating and managing branding kits on sha
 
 ## cPanel Setup Guide
 1. **Upload files**
-   - Upload all project files to your hosting account.
+   - Download the **pre-built release bundle** from GitHub (includes `vendor/`).
+   - Upload the full bundle to your hosting account.
    - Set the document root to the `/public` directory.
-2. **Install dependencies**
-   - If Composer is available on the server:
-     - Run `composer install --no-dev --optimize-autoloader`.
-   - If Composer is not available:
-     - Run the command locally and upload the generated `vendor/` directory.
+2. **No Composer required**
+   - The installer requires `vendor/` to exist. The release bundle already includes it.
+   - If you build from source, run `composer install --no-dev --optimize-autoloader` locally and upload the generated `vendor/` directory.
 3. **Create the database**
-   - Create a MySQL/MariaDB database and user in cPanel.
+   - Create a MySQL/MariaDB database and user in cPanel **or** check “Create database” in the installer (requires privileges).
 4. **Configure `.env`**
    - Copy `.env.example` to `.env` and update values, or use the installer at `/install`.
 5. **Run migrations**
@@ -97,3 +96,10 @@ Tailwind is compiled at build time. Rebuild assets with:
 npm install
 npm run build
 ```
+
+## Release Bundle (prebuilt)
+To create a prebuilt ZIP that includes `vendor/` (so no Composer is required on the server):
+```
+./scripts/build-release.sh
+```
+Upload the generated `dist/studiokit-release.zip` contents to your hosting account.
