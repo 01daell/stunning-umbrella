@@ -64,9 +64,11 @@ StudioKit is a Laravel-based SaaS for creating and managing branding kits on sha
 1. **Upload files**
    - Upload all project files to your hosting account.
    - Set the document root to the `/public` directory.
-2. **Install dependencies (no Composer on server)**
-   - Use the pre-built release bundle that includes the `vendor/` directory.
-   - If you are building from source, run `composer install --no-dev --optimize-autoloader` locally and upload the generated `vendor/` directory with the rest of the files.
+2. **Install dependencies**
+   - If Composer is available on the server:
+     - Run `composer install --no-dev --optimize-autoloader`.
+   - If Composer is not available:
+     - Run the command locally and upload the generated `vendor/` directory.
 3. **Create the database**
    - Create a MySQL/MariaDB database and user in cPanel.
 4. **Configure `.env`**

@@ -15,7 +15,6 @@ class InstallController extends Controller
     {
         return view('install.index', [
             'checks' => $this->extensionChecks(),
-            'vendorReady' => file_exists(base_path('vendor/autoload.php')),
         ]);
     }
 

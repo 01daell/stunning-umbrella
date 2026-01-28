@@ -5,15 +5,6 @@
     <div class="card" style="max-width:640px; margin:0 auto;">
         <h2>Install StudioKit</h2>
         <p style="color:#64748b;">Complete the setup wizard to configure the database and first admin.</p>
-        @if(!$vendorReady)
-            <div class="card" style="margin-top:16px; border-color:#f97316; background:#fff7ed;">
-                <strong>Vendor dependencies missing.</strong>
-                <p style="color:#9a3412; margin-top:8px;">
-                    This installer requires the <code>vendor/</code> folder to be uploaded with the app (pre-built package).
-                    Upload the full release bundle that includes <code>vendor/</code> before running the installer.
-                </p>
-            </div>
-        @endif
         <div style="margin:16px 0;">
             <h4>Environment checks</h4>
             <ul>
@@ -22,7 +13,7 @@
                 @endforeach
             </ul>
         </div>
-        <form method="post" action="{{ route('install.store') }}" style="display:grid; gap:12px;" @if(!$vendorReady) onsubmit="alert('Upload the vendor folder before installing.'); return false;" @endif>
+        <form method="post" action="{{ route('install.store') }}" style="display:grid; gap:12px;">
             @csrf
             <label>
                 App URL
